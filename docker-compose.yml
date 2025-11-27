@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  sndra-link-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DATABASE_URL=sqlite:///data/sndra-link.db
+      - DOMAIN=https://sndra.link
+    networks:
+      - traefik-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.sndralink.rule=Host(`sndra.link`)"
+      - "traefik.http.routers.sndralink.entrypoints=web"
+      - "traefik.http.services.sndralink.loadbalancer.server.port=7700"
+    volumes:
+      - ./data:/data
+    restart: always
+networks:
+  traefik-network:
+    external: true

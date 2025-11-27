@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SNDRA.LINK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+    src="https://tj.appsdata.org/api/script.js"
+    data-site-id="f9186c1df727"
+    defer
+></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-lg">
+        <a href="https://github.com/atshelchin/sndra-link" target="_blank" class="flex justify-end mb-4 items-center">
+
+            <span class="text-md font-medium"> SNDRA.LINK</span>
+            <svg class="w-4 h-4 text-gray-800 hover:text-blue-600 transition" fill="currentColor" viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.28 1.08 2.84.82.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.92 0-1.08.39-1.96 1.03-2.65-.1-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.52.33 1.91-1.3 2.75-1.03 2.75-1.03.55 1.36.2 2.37.1 2.62.64.69 1.03 1.57 1.03 2.65 0 3.82-2.33 4.67-4.55 4.92.36.31.56.92.56 1.85v2.74c0 .27.16.59.66.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z" />
+            </svg>
+
+        </a>
+        <h1 class="text-2xl font-bold mb-6 text-center">Campaign URL Builder</h1>
+        <form id="myForm" class="space-y-4">
+            <div>
+                <label for="website" class="block text-sm font-medium text-gray-700">Website URL <span
+                        class="text-red-500">*</span></label>
+                <input type="text" id="website" name="website"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
+                    placeholder="The full website URL ">
+            </div>
+            <div>
+                <label for="campaign" class="block text-sm font-medium text-gray-700">campaign name</label>
+                <input type="text" id="campaign" name="campaign"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
+                    placeholder="Which campaign drove the traffic?">
+            </div>
+
+            <div>
+                <label for="source" class="block text-sm font-medium text-gray-700">Source</label>
+                <input type="text" id="source" name="source"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm "
+                    placeholder="Which group, post, video, or account drove the traffic?                    ">
+            </div>
+            <div>
+                <label for="medium" class="block text-sm font-medium text-gray-700">Medium</label>
+                <input type="text" id="medium" name="medium"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
+                    placeholder="Which medium hosts the group, post, video, or account?                    ">
+            </div>
+            <div>
+                <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
+                <input type="text" id="content" name="content"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
+                    placeholder="Unique identifier for ads or links in the same source">
+            </div>
+
+            <div>
+                <label for="term" class="block text-sm font-medium text-gray-700">Term</label>
+                <input type="text" id="term" name="term"
+                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
+                    placeholder="Unique identifier for tracking sales revenue                    ">
+            </div>
+
+            <!-- <button type="submit"
+                class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition">Generate</button>
+
+                 -->
+
+            <div class="flex space-x-4">
+                <button type="submit"
+                    class="flex-1 bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition">Generate</button>
+                <button type="button" id="shortenlink"
+                    class="flex-1 bg-gray-600 text-white p-2 rounded-md hover:bg-gray-700 transition">Shorten
+                    Link</button>
+            </div>
+
+
+        </form>
+        <div id="result" class="break-all mt-4 w-full text-sm text-gray-600"></div>
+        <div id="result2" class="break-all mt-4 w-full text-sm text-gray-600"></div>
+    </div>
+
+    <script>
+
+        function generateUTMUrl(baseUrl, utmParams) {
+            if (!baseUrl) {
+                throw new Error("Invalid Website URL");
+            }
+
+            const url = new URL(baseUrl);
+
+            for (let key in utmParams) {
+                if (utmParams[key]) {
+                    url.searchParams.set(`utm_${key}`, utmParams[key]);
+                }
+            }
+
+            return url.toString();
+        }
+        document.getElementById('myForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const website = document.getElementById('website').value;
+            const campaign = document.getElementById('campaign').value;
+            const source = document.getElementById('source').value;
+            const medium = document.getElementById('medium').value;
+            const content = document.getElementById('content').value;
+            const term = document.getElementById('term').value;
+
+            console.log({ campaign, source, medium, content, term })
+            const resultDiv = document.getElementById('result');
+
+            try {
+                resultDiv.textContent = generateUTMUrl(website, { campaign, source, medium, content, term })
+                resultDiv.classList.add('text-green-600');
+            } catch (error) {
+
+                resultDiv.textContent = ` ${error.message}`;
+                resultDiv.classList.add('text-red-600');
+            }
+        });
+
+        document.getElementById('shortenlink').addEventListener('click', async (e) => {
+            e.preventDefault();
+            const website = document.getElementById('website').value;
+            const campaign = document.getElementById('campaign').value;
+            const source = document.getElementById('source').value;
+            const medium = document.getElementById('medium').value;
+            const content = document.getElementById('content').value;
+            const term = document.getElementById('term').value;
+
+            console.log({ campaign, source, medium, content, term })
+            const resultDiv = document.getElementById('result');
+
+            try {
+                resultDiv.textContent = generateUTMUrl(website, { campaign, source, medium, content, term })
+                resultDiv.classList.add('text-green-600');
+            } catch (error) {
+
+                resultDiv.textContent = ` ${error.message}`;
+                resultDiv.classList.add('text-red-600');
+                return
+            }
+
+            try {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ link: resultDiv.textContent })
+                });
+                const data = await response.json();
+                resultDiv.textContent = `Short URL: ${data.short}`;
+                resultDiv.classList.add('text-green-600');
+            } catch (error) {
+                resultDiv.textContent = `Failed：${error.message}`;
+                resultDiv.classList.add('text-red-600');
+            }
+        });
+    </script>
+</body>
+
+</html>
