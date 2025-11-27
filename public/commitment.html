@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>服务承诺 - SNDRA.LINK Service Commitment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8 px-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <a href="/" class="inline-block mb-4 text-4xl font-bold text-gray-800 hover:text-blue-600 transition">
+                SNDRA.LINK
+            </a>
+            <h1 id="pageTitle" class="text-3xl font-bold text-gray-700 mb-2">服务承诺</h1>
+            <p id="pageSubtitle" class="text-gray-600">我们的长期运行承诺</p>
+
+            <!-- Language Toggle -->
+            <div class="flex justify-center gap-2 mt-4">
+                <button onclick="setLanguage('zh')" id="langZh"
+                    class="px-4 py-2 rounded-lg font-semibold transition bg-blue-600 text-white">
+                    中文
+                </button>
+                <button onclick="setLanguage('en')" id="langEn"
+                    class="px-4 py-2 rounded-lg font-semibold transition bg-gray-200 text-gray-700 hover:bg-gray-300">
+                    English
+                </button>
+            </div>
+        </div>
+
+        <!-- Commitment Timeline -->
+        <div class="bg-white rounded-xl shadow-xl p-6 sm:p-8 mb-6">
+            <div class="space-y-6">
+                <!-- Current Commitment -->
+                <div class="border-l-4 border-green-500 pl-6 relative">
+                    <div
+                        class="absolute -left-3 top-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                        </svg>
+                    </div>
+                    <div class="mb-1">
+                        <span class="inline-block px-3 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full"
+                            data-i18n="current">当前承诺</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2" data-i18n="commitment1Title">第一个五年承诺</h3>
+                    <div class="text-gray-600 space-y-1">
+                        <p><strong data-i18n="startDate">开始日期：</strong><span class="text-blue-600">2025-12-01</span>
+                        </p>
+                        <p><strong data-i18n="endDate">结束日期：</strong><span class="text-blue-600">2030-12-01</span>
+                        </p>
+                        <p class="mt-3 text-sm" data-i18n="commitment1Desc">
+                            我们承诺 SNDRA.LINK 将至少运行到 2030 年 12 月 1 日。在此期间，所有生成的短链接将保持有效，不会删除或失效。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Future Commitment Placeholder -->
+                <div class="border-l-4 border-gray-300 pl-6 relative opacity-60">
+                    <div
+                        class="absolute -left-3 top-0 w-6 h-6 bg-gray-300 rounded-full flex items-center justify-center">
+                        <svg class="w-4 h-4 text-white" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="mb-1">
+                        <span
+                            class="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-xs font-semibold rounded-full"
+                            data-i18n="future">未来承诺</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-600 mb-2" data-i18n="commitment2Title">第二个五年承诺</h3>
+                    <div class="text-gray-500 space-y-1">
+                        <p><strong data-i18n="startDate">开始日期：</strong>2030-12-01</p>
+                        <p><strong data-i18n="endDate">结束日期：</strong>2035-12-01</p>
+                        <p class="mt-3 text-sm" data-i18n="commitment2Desc">
+                            在第一个承诺期满前，我们将发布新的五年承诺，确保服务的持续运行。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Our Promise -->
+        <div class="bg-white rounded-xl shadow-xl p-6 sm:p-8 mb-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4" data-i18n="ourPromiseTitle">我们的承诺</h2>
+            <div class="space-y-4 text-gray-700">
+                <div class="flex items-start">
+                    <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                    </svg>
+                    <p data-i18n="promise1"><strong>永久有效：</strong>所有生成的短链接在服务运行期间永久有效，不会因时间而失效。</p>
+                </div>
+                <div class="flex items-start">
+                    <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                    </svg>
+                    <p data-i18n="promise2"><strong>100% 免费：</strong>服务完全免费，无广告，无需注册，无使用限制。</p>
+                </div>
+                <div class="flex items-start">
+                    <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                    </svg>
+                    <p data-i18n="promise3"><strong>持续承诺：</strong>每个承诺期满前，我们将发布新的承诺，确保服务的长期稳定运行。</p>
+                </div>
+                <div class="flex items-start">
+                    <svg class="w-6 h-6 text-green-600 mr-3 flex-shrink-0 mt-1" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" />
+                    </svg>
+                    <p data-i18n="promise4"><strong>开源透明：</strong>项目代码开源，接受社区监督，确保服务的可靠性和安全性。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="bg-white rounded-xl shadow-xl p-6 sm:p-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4" data-i18n="faqTitle">常见问题</h2>
+            <div class="space-y-4">
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-2" data-i18n="faq1Q">❓ 为什么是 5 年承诺？</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="faq1A">
+                        5 年是一个合理的承诺周期，既能保证服务的长期稳定性，又能根据技术发展和用户需求进行调整。我们会在每个周期结束前续期。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-2" data-i18n="faq2Q">❓ 5 年后会关闭服务吗？</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="faq2A">
+                        不会。5 年是一个承诺周期，到期前我们会发布新的承诺。除非遇到不可抗力，否则服务将持续运行。
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-gray-800 mb-2" data-i18n="faq3Q">❓ 如何确保承诺的可信度？</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="faq3A">
+                        我们的项目完全开源，代码托管在 GitHub，任何人都可以查看、审计和部署。我们相信开源和透明是建立信任的最好方式。
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back Button -->
+        <div class="text-center mt-8">
+            <a href="/"
+                class="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition font-semibold"
+                data-i18n="backButton">
+                返回首页
+            </a>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            zh: {
+                pageTitle: "服务承诺",
+                pageSubtitle: "我们的长期运行承诺",
+                current: "当前承诺",
+                future: "未来承诺",
+                commitment1Title: "第一个五年承诺",
+                commitment2Title: "第二个五年承诺",
+                startDate: "开始日期：",
+                endDate: "结束日期：",
+                commitment1Desc: "我们承诺 SNDRA.LINK 将至少运行到 2030 年 12 月 1 日。在此期间，所有生成的短链接将保持有效，不会删除或失效。",
+                commitment2Desc: "在第一个承诺期满前，我们将发布新的五年承诺，确保服务的持续运行。",
+                ourPromiseTitle: "我们的承诺",
+                promise1: "<strong>永久有效：</strong>所有生成的短链接在服务运行期间永久有效，不会因时间而失效。",
+                promise2: "<strong>100% 免费：</strong>服务完全免费，无广告，无需注册，无使用限制。",
+                promise3: "<strong>持续承诺：</strong>每个承诺期满前，我们将发布新的承诺，确保服务的长期稳定运行。",
+                promise4: "<strong>开源透明：</strong>项目代码开源，接受社区监督，确保服务的可靠性和安全性。",
+                faqTitle: "常见问题",
+                faq1Q: "❓ 为什么是 5 年承诺？",
+                faq1A: "5 年是一个合理的承诺周期，既能保证服务的长期稳定性，又能根据技术发展和用户需求进行调整。我们会在每个周期结束前续期。",
+                faq2Q: "❓ 5 年后会关闭服务吗？",
+                faq2A: "不会。5 年是一个承诺周期，到期前我们会发布新的承诺。除非遇到不可抗力，否则服务将持续运行。",
+                faq3Q: "❓ 如何确保承诺的可信度？",
+                faq3A: "我们的项目完全开源，代码托管在 GitHub，任何人都可以查看、审计和部署。我们相信开源和透明是建立信任的最好方式。",
+                backButton: "返回首页"
+            },
+            en: {
+                pageTitle: "Service Commitment",
+                pageSubtitle: "Our Long-term Operation Commitment",
+                current: "Current Commitment",
+                future: "Future Commitment",
+                commitment1Title: "First 5-Year Commitment",
+                commitment2Title: "Second 5-Year Commitment",
+                startDate: "Start Date: ",
+                endDate: "End Date: ",
+                commitment1Desc: "We commit that SNDRA.LINK will operate at least until December 1, 2030. During this period, all generated short links will remain valid and will not be deleted or expired.",
+                commitment2Desc: "Before the first commitment period ends, we will release a new 5-year commitment to ensure continued service operation.",
+                ourPromiseTitle: "Our Promise",
+                promise1: "<strong>Permanent Validity:</strong> All generated short links remain valid permanently during service operation, never expiring over time.",
+                promise2: "<strong>100% Free:</strong> Completely free service with no ads, no registration required, and no usage limits.",
+                promise3: "<strong>Continuous Commitment:</strong> Before each commitment period ends, we will release a new commitment to ensure long-term stable operation.",
+                promise4: "<strong>Open Source & Transparent:</strong> Project code is open source, subject to community oversight, ensuring reliability and security.",
+                faqTitle: "Frequently Asked Questions",
+                faq1Q: "❓ Why a 5-year commitment?",
+                faq1A: "5 years is a reasonable commitment cycle that ensures long-term service stability while allowing adjustments based on technology development and user needs. We will renew before each cycle ends.",
+                faq2Q: "❓ Will the service shut down after 5 years?",
+                faq2A: "No. 5 years is a commitment cycle, and we will release a new commitment before it expires. Unless force majeure occurs, the service will continue operating.",
+                faq3Q: "❓ How to ensure the credibility of the commitment?",
+                faq3A: "Our project is completely open source, hosted on GitHub, and anyone can view, audit, and deploy it. We believe open source and transparency are the best ways to build trust.",
+                backButton: "Back to Home"
+            }
+        };
+
+        let currentLang = 'zh';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+
+            // Update button styles
+            document.getElementById('langZh').className = lang === 'zh'
+                ? 'px-4 py-2 rounded-lg font-semibold transition bg-blue-600 text-white'
+                : 'px-4 py-2 rounded-lg font-semibold transition bg-gray-200 text-gray-700 hover:bg-gray-300';
+
+            document.getElementById('langEn').className = lang === 'en'
+                ? 'px-4 py-2 rounded-lg font-semibold transition bg-blue-600 text-white'
+                : 'px-4 py-2 rounded-lg font-semibold transition bg-gray-200 text-gray-700 hover:bg-gray-300';
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+
+            // Save language preference
+            localStorage.setItem('language', lang);
+        }
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('language') || 'zh';
+        setLanguage(savedLang);
+    </script>
+</body>
+
+</html>

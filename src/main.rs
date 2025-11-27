@@ -70,6 +70,7 @@ async fn main() {
 
     let app = Router::new()
         .route("/", get_service(ServeDir::new(static_dir)))
+        .route("/commitment.html", get_service(ServeDir::new(static_dir)))
         .route("/r/{key}", get(redirect_to_url))
         .route("/", post(create_link))
         .layer(axum::middleware::from_fn_with_state(

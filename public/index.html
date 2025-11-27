@@ -13,84 +13,475 @@
 ></script>
 </head>
 
-<body class="bg-gray-100 flex items-center justify-center min-h-screen">
-    <div class="bg-white p-6 sm:p-8 rounded-lg shadow-lg w-full max-w-lg">
-        <a href="https://github.com/atshelchin/sndra-link" target="_blank" class="flex justify-end mb-4 items-center">
-
-            <span class="text-md font-medium"> SNDRA.LINK</span>
-            <svg class="w-4 h-4 text-gray-800 hover:text-blue-600 transition" fill="currentColor" viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                    d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.28 1.08 2.84.82.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.92 0-1.08.39-1.96 1.03-2.65-.1-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.52.33 1.91-1.3 2.75-1.03 2.75-1.03.55 1.36.2 2.37.1 2.62.64.69 1.03 1.57 1.03 2.65 0 3.82-2.33 4.67-4.55 4.92.36.31.56.92.56 1.85v2.74c0 .27.16.59.66.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z" />
-            </svg>
-
-        </a>
-        <h1 class="text-2xl font-bold mb-6 text-center">Campaign URL Builder</h1>
-        <form id="myForm" class="space-y-4">
-            <div>
-                <label for="website" class="block text-sm font-medium text-gray-700">Website URL <span
-                        class="text-red-500">*</span></label>
-                <input type="text" id="website" name="website"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
-                    placeholder="The full website URL ">
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8 px-4">
+    <div class="max-w-2xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <div class="flex items-center justify-center mb-4">
+                <h1 class="text-4xl font-bold text-gray-800">SNDRA.LINK</h1>
+                <a href="https://github.com/atshelchin/sndra-link" target="_blank" class="ml-3 text-gray-600 hover:text-blue-600 transition">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.28 1.08 2.84.82.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.92 0-1.08.39-1.96 1.03-2.65-.1-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.52.33 1.91-1.3 2.75-1.03 2.75-1.03.55 1.36.2 2.37.1 2.62.64.69 1.03 1.57 1.03 2.65 0 3.82-2.33 4.67-4.55 4.92.36.31.56.92.56 1.85v2.74c0 .27.16.59.66.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z" />
+                    </svg>
+                </a>
             </div>
-            <div>
-                <label for="campaign" class="block text-sm font-medium text-gray-700">campaign name</label>
-                <input type="text" id="campaign" name="campaign"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
-                    placeholder="Which campaign drove the traffic?">
+            <p class="text-lg text-gray-600" data-i18n="subtitle">免费短链接生成服务</p>
+
+            <!-- Language Switcher -->
+            <div class="flex justify-center gap-2 mt-3">
+                <button onclick="setLanguage('zh')" id="langZh"
+                    class="px-3 py-1 rounded text-sm font-medium transition bg-blue-600 text-white">
+                    中文
+                </button>
+                <button onclick="setLanguage('en')" id="langEn"
+                    class="px-3 py-1 rounded text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">
+                    English
+                </button>
             </div>
 
-            <div>
-                <label for="source" class="block text-sm font-medium text-gray-700">Source</label>
-                <input type="text" id="source" name="source"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm "
-                    placeholder="Which group, post, video, or account drove the traffic?                    ">
+            <!-- Highlight Badges -->
+            <div class="flex flex-wrap justify-center gap-3 mt-4">
+                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-green-100 text-green-800" data-i18n="badge-free">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
+                    </svg>
+                    100% 免费
+                </span>
+                <a href="/commitment.html" class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-blue-100 text-blue-800 hover:bg-blue-200 transition cursor-pointer" data-i18n="badge-commitment">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                    </svg>
+                    第一个五年承诺 (2025-12~2030-12)
+                </a>
+                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-purple-100 text-purple-800" data-i18n="badge-permanent">
+                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0v-.5A1.5 1.5 0 0114.5 6c.526 0 .988-.27 1.256-.679a6.012 6.012 0 011.913 2.706l-1.163 1.163a2.5 2.5 0 00-.586 2.62l.506 1.012a6.015 6.015 0 01-1.925 1.238l-.964-.482A2.5 2.5 0 0012 13v.5a6.015 6.015 0 01-4 0V13a2.5 2.5 0 00-1.537.578l-.964.482a6.015 6.015 0 01-1.925-1.238l.506-1.012a2.5 2.5 0 00-.586-2.62L4.332 8.027z" clip-rule="evenodd"/>
+                    </svg>
+                    链接永久有效
+                </span>
             </div>
-            <div>
-                <label for="medium" class="block text-sm font-medium text-gray-700">Medium</label>
-                <input type="text" id="medium" name="medium"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
-                    placeholder="Which medium hosts the group, post, video, or account?                    ">
+        </div>
+
+        <!-- Main Card with Flip Animation -->
+        <div class="bg-white rounded-xl shadow-xl p-6 sm:p-8 relative" style="perspective: 1000px;">
+            <div id="formContainer" class="transition-all duration-500" style="transform-style: preserve-3d;">
+                <!-- Simple Short Link Form (Front) -->
+                <div id="simpleFormContainer" class="space-y-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800" data-i18n="generate-title">生成短链接</h2>
+                        <button type="button" id="showAdvanced"
+                            class="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
+                            <span data-i18n="switch-to-advanced">切换到高级模式</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <form id="simpleForm" class="space-y-4">
+                        <div>
+                            <label for="simpleUrl" class="block text-sm font-medium text-gray-700 mb-2">
+                                <span data-i18n="input-label">输入长网址</span> <span class="text-red-500">*</span>
+                            </label>
+                            <input type="url" id="simpleUrl"
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                                data-i18n-placeholder="input-placeholder"
+                                placeholder="https://example.com/very/long/url/with/many/parameters"
+                                required>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition font-semibold shadow-md"
+                            data-i18n="button-generate">
+                            🔗 生成短链接
+                        </button>
+                    </form>
+                    <div id="simpleResult" class="mt-4"></div>
+                </div>
+
+                <!-- Advanced Campaign Builder (Back) -->
+                <div id="advancedFormContainer" class="hidden space-y-4">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="text-xl font-semibold text-gray-800" data-i18n="advanced-title">Campaign URL Builder</h2>
+                        <button type="button" id="showSimple"
+                            class="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
+                            </svg>
+                            <span data-i18n="switch-to-simple">返回基础模式</span>
+                        </button>
+                    </div>
+                    <form id="myForm" class="space-y-4">
+                        <div>
+                            <label for="website" class="block text-sm font-medium text-gray-700 mb-1">
+                                <span data-i18n="utm-website-label">目标网址</span> <span class="text-red-500">*</span>
+                            </label>
+                            <input type="url" id="website" name="website"
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent"
+                                data-i18n-placeholder="utm-website-placeholder"
+                                placeholder="https://example.com"
+                                required>
+                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-website-hint">📌 目标网站的完整 URL</p>
+                        </div>
+
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                            <p class="text-sm text-blue-800" data-i18n="utm-info">
+                                <strong>UTM 参数说明：</strong>用于追踪营销活动的流量来源和效果
+                            </p>
+                        </div>
+
+                        <div>
+                            <label for="campaign" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                                <span data-i18n="utm-campaign-label">Campaign Name</span>
+                                <span class="ml-2 text-xs text-gray-500">(utm_campaign)</span>
+                            </label>
+                            <input type="text" id="campaign" name="campaign"
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                data-i18n-placeholder="utm-campaign-placeholder"
+                                placeholder="summer_sale">
+                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-campaign-hint">💡 活动名称，例如：双11促销、新品发布</p>
+                        </div>
+
+                        <div>
+                            <label for="source" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                                <span data-i18n="utm-source-label">Source</span>
+                                <span class="ml-2 text-xs text-gray-500">(utm_source)</span>
+                            </label>
+                            <input type="text" id="source" name="source"
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                data-i18n-placeholder="utm-source-placeholder"
+                                placeholder="google">
+                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-source-hint">💡 流量来源，例如：google、facebook、newsletter</p>
+                        </div>
+
+                        <div>
+                            <label for="medium" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                                <span data-i18n="utm-medium-label">Medium</span>
+                                <span class="ml-2 text-xs text-gray-500">(utm_medium)</span>
+                            </label>
+                            <input type="text" id="medium" name="medium"
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                data-i18n-placeholder="utm-medium-placeholder"
+                                placeholder="cpc">
+                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-medium-hint">💡 媒介类型，例如：cpc（付费广告）、email、social</p>
+                        </div>
+
+                        <div>
+                            <label for="content" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                                <span data-i18n="utm-content-label">Content</span>
+                                <span class="ml-2 text-xs text-gray-500">(utm_content)</span>
+                            </label>
+                            <input type="text" id="content" name="content"
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                data-i18n-placeholder="utm-content-placeholder"
+                                placeholder="banner_ad">
+                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-content-hint">💡 区分同一来源的不同内容，例如：banner_ad、text_link</p>
+                        </div>
+
+                        <div>
+                            <label for="term" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                                <span data-i18n="utm-term-label">Term</span>
+                                <span class="ml-2 text-xs text-gray-500">(utm_term)</span>
+                            </label>
+                            <input type="text" id="term" name="term"
+                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                data-i18n-placeholder="utm-term-placeholder"
+                                placeholder="running+shoes">
+                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-term-hint">💡 付费搜索关键词，用于追踪广告关键词效果</p>
+                        </div>
+
+                        <div class="flex space-x-4 pt-4">
+                            <button type="submit"
+                                class="flex-1 bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-700 transition font-semibold shadow-md"
+                                data-i18n="utm-button-generate">
+                                生成 UTM 链接
+                            </button>
+                            <button type="button" id="shortenlink"
+                                class="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white py-3 rounded-lg hover:from-blue-700 hover:to-indigo-700 transition font-semibold shadow-md"
+                                data-i18n="utm-button-shorten">
+                                生成并缩短链接
+                            </button>
+                        </div>
+                    </form>
+                    <div id="result" class="break-all mt-4 p-4 rounded-lg"></div>
+                </div>
             </div>
-            <div>
-                <label for="content" class="block text-sm font-medium text-gray-700">Content</label>
-                <input type="text" id="content" name="content"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
-                    placeholder="Unique identifier for ads or links in the same source">
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="bg-white rounded-xl shadow-xl p-6 sm:p-8 mt-6">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center" data-i18n="faq-title">常见问题</h2>
+            <div class="space-y-4">
+                <div class="border-l-4 border-blue-500 pl-4">
+                    <h3 class="font-semibold text-gray-800 mb-2" data-i18n="faq-home-1q">❓ 短链接会过期吗？</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="faq-home-1a">
+                        不会！所有生成的短链接永久有效，只要服务在运行就不会过期。我们承诺至少运行到 2030 年 12 月。
+                    </p>
+                </div>
+                <div class="border-l-4 border-green-500 pl-4">
+                    <h3 class="font-semibold text-gray-800 mb-2" data-i18n="faq-home-2q">❓ 需要注册账号吗？</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="faq-home-2a">
+                        完全不需要！无需注册、无需登录，直接使用。我们不收集任何个人信息。
+                    </p>
+                </div>
+                <div class="border-l-4 border-purple-500 pl-4">
+                    <h3 class="font-semibold text-gray-800 mb-2" data-i18n="faq-home-3q">❓ Campaign URL Builder 是什么？</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="faq-home-3a">
+                        这是一个高级功能，可以为你的链接添加 UTM 参数，用于追踪营销活动的流量来源和效果。适合营销人员和数据分析师使用。
+                    </p>
+                </div>
+                <div class="border-l-4 border-orange-500 pl-4">
+                    <h3 class="font-semibold text-gray-800 mb-2" data-i18n="faq-home-4q">❓ 服务真的免费吗？</h3>
+                    <p class="text-gray-600 text-sm" data-i18n="faq-home-4a">
+                        是的！100% 免费，无广告，无限制。这是一个开源项目，我们承诺永久免费运行。
+                    </p>
+                </div>
             </div>
-
-            <div>
-                <label for="term" class="block text-sm font-medium text-gray-700">Term</label>
-                <input type="text" id="term" name="term"
-                    class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 text-xs sm:text-sm"
-                    placeholder="Unique identifier for tracking sales revenue                    ">
+            <div class="text-center mt-6">
+                <a href="/commitment.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium" data-i18n="faq-more">
+                    查看完整服务承诺 →
+                </a>
             </div>
+        </div>
 
-            <!-- <button type="submit"
-                class="w-full bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition">Generate</button>
-
-                 -->
-
-            <div class="flex space-x-4">
-                <button type="submit"
-                    class="flex-1 bg-blue-600 text-white p-2 rounded-md hover:bg-blue-700 transition">Generate</button>
-                <button type="button" id="shortenlink"
-                    class="flex-1 bg-gray-600 text-white p-2 rounded-md hover:bg-gray-700 transition">Shorten
-                    Link</button>
-            </div>
-
-
-        </form>
-        <div id="result" class="break-all mt-4 w-full text-sm text-gray-600"></div>
-        <div id="result2" class="break-all mt-4 w-full text-sm text-gray-600"></div>
+        <!-- Footer -->
+        <div class="text-center mt-8 text-sm text-gray-600">
+            <p data-i18n="footer-text">安全 · 可靠 · 永久免费</p>
+        </div>
     </div>
 
     <script>
+        // Multi-language support
+        const translations = {
+            zh: {
+                subtitle: "免费短链接生成服务",
+                "badge-free": "100% 免费",
+                "badge-commitment": "第一个五年承诺 (2025-12~2030-12)",
+                "badge-permanent": "链接永久有效",
+                "generate-title": "生成短链接",
+                "input-label": "输入长网址",
+                "input-placeholder": "https://example.com/very/long/url/with/many/parameters",
+                "button-generate": "🔗 生成短链接",
+                "advanced-section": "高级功能",
+                "advanced-title": "营销活动追踪链接",
+                "advanced-subtitle": "(Campaign URL Builder)",
+                "switch-to-advanced": "切换到高级模式",
+                "switch-to-simple": "返回基础模式",
+                "utm-website-label": "目标网址",
+                "utm-website-placeholder": "https://example.com",
+                "utm-website-hint": "📌 目标网站的完整 URL",
+                "utm-info": "<strong>UTM 参数说明：</strong>用于追踪营销活动的流量来源和效果",
+                "utm-campaign-label": "活动名称",
+                "utm-campaign-placeholder": "summer_sale",
+                "utm-campaign-hint": "💡 活动标识，例如：双11促销、新品发布",
+                "utm-source-label": "流量来源",
+                "utm-source-placeholder": "google",
+                "utm-source-hint": "💡 访客来源平台，例如：google、facebook、newsletter",
+                "utm-medium-label": "媒介类型",
+                "utm-medium-placeholder": "cpc",
+                "utm-medium-hint": "💡 推广媒介，例如：cpc（付费广告）、email、social",
+                "utm-content-label": "内容标识",
+                "utm-content-placeholder": "banner_ad",
+                "utm-content-hint": "💡 区分同一来源的不同内容，例如：banner_ad、text_link",
+                "utm-term-label": "关键词",
+                "utm-term-placeholder": "running+shoes",
+                "utm-term-hint": "💡 付费搜索关键词，用于追踪广告关键词效果",
+                "utm-button-generate": "生成 UTM 链接",
+                "utm-button-shorten": "生成并缩短链接",
+                "footer-text": "安全 · 可靠 · 永久免费",
+                // Messages
+                "msg-enter-url": "请输入网址",
+                "msg-generating": "生成中...",
+                "msg-failed": "生成失败",
+                "msg-success": "短链接生成成功：",
+                "msg-utm-success": "UTM 链接生成成功：",
+                "msg-permanent-hint": "此链接永久有效，只要服务运行就不会过期",
+                "btn-copy": "复制",
+                "msg-copied": "已复制",
+                "msg-copy-failed": "复制失败",
+                "msg-enter-website": "请输入网址",
+                // FAQ
+                "faq-title": "常见问题",
+                "faq-home-1q": "❓ 短链接会过期吗？",
+                "faq-home-1a": "不会！所有生成的短链接永久有效，只要服务在运行就不会过期。我们承诺至少运行到 2030 年 12 月。",
+                "faq-home-2q": "❓ 需要注册账号吗？",
+                "faq-home-2a": "完全不需要！无需注册、无需登录，直接使用。我们不收集任何个人信息。",
+                "faq-home-3q": "❓ Campaign URL Builder 是什么？",
+                "faq-home-3a": "这是一个高级功能，可以为你的链接添加 UTM 参数，用于追踪营销活动的流量来源和效果。适合营销人员和数据分析师使用。",
+                "faq-home-4q": "❓ 服务真的免费吗？",
+                "faq-home-4a": "是的！100% 免费，无广告，无限制。这是一个开源项目，我们承诺永久免费运行。",
+                "faq-more": "查看完整服务承诺 →"
+            },
+            en: {
+                subtitle: "Free URL Shortening Service",
+                "badge-free": "100% Free",
+                "badge-commitment": "First 5-Year Commitment (2025-12~2030-12)",
+                "badge-permanent": "Links Never Expire",
+                "generate-title": "Generate Short Link",
+                "input-label": "Enter Long URL",
+                "input-placeholder": "https://example.com/very/long/url/with/many/parameters",
+                "button-generate": "🔗 Generate Short Link",
+                "advanced-section": "Advanced Features",
+                "advanced-title": "Campaign URL Builder",
+                "advanced-subtitle": "(Marketing Campaign Tracking)",
+                "utm-website-label": "Website URL",
+                "utm-website-placeholder": "https://example.com",
+                "utm-website-hint": "📌 Full URL of the target website",
+                "utm-info": "<strong>UTM Parameters:</strong> Track traffic sources and campaign effectiveness",
+                "utm-campaign-label": "Campaign Name",
+                "utm-campaign-placeholder": "summer_sale",
+                "utm-campaign-hint": "💡 Campaign identifier, e.g., summer_sale, product_launch",
+                "utm-source-label": "Source",
+                "utm-source-placeholder": "google",
+                "utm-source-hint": "💡 Traffic source, e.g., google, facebook, newsletter",
+                "utm-medium-label": "Medium",
+                "utm-medium-placeholder": "cpc",
+                "utm-medium-hint": "💡 Medium type, e.g., cpc (paid ads), email, social",
+                "utm-content-label": "Content",
+                "utm-content-placeholder": "banner_ad",
+                "utm-content-hint": "💡 Differentiate content from same source, e.g., banner_ad, text_link",
+                "utm-term-label": "Term",
+                "utm-term-placeholder": "running+shoes",
+                "utm-term-hint": "💡 Paid search keywords for tracking ad keyword performance",
+                "utm-button-generate": "Generate UTM Link",
+                "utm-button-shorten": "Generate & Shorten",
+                "footer-text": "Secure · Reliable · Forever Free",
+                // Messages
+                "msg-enter-url": "Please enter a URL",
+                "msg-generating": "Generating...",
+                "msg-failed": "Generation failed",
+                "msg-success": "Short link generated successfully:",
+                "msg-utm-success": "UTM link generated successfully:",
+                "msg-permanent-hint": "This link is permanent and will never expire as long as the service is running",
+                "btn-copy": "Copy",
+                "msg-copied": "Copied!",
+                "msg-copy-failed": "Failed",
+                "msg-enter-website": "Please enter a website URL",
+                // FAQ
+                "faq-title": "FAQ",
+                "faq-home-1q": "❓ Do short links expire?",
+                "faq-home-1a": "No! All generated short links are permanent and will never expire as long as the service is running. We commit to running at least until December 2030.",
+                "faq-home-2q": "❓ Do I need to register?",
+                "faq-home-2a": "Not at all! No registration, no login required. Just use it directly. We don't collect any personal information.",
+                "faq-home-3q": "❓ What is Campaign URL Builder?",
+                "faq-home-3a": "It's an advanced feature that adds UTM parameters to your links for tracking marketing campaign traffic sources and effectiveness. Perfect for marketers and data analysts.",
+                "faq-home-4q": "❓ Is the service really free?",
+                "faq-home-4a": "Yes! 100% free, no ads, no limits. This is an open-source project, and we promise to keep it free forever.",
+                "faq-more": "View Full Service Commitment →"
+            }
+        };
 
+        let currentLang = 'zh';
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : 'en';
+
+            // Update button styles
+            document.getElementById('langZh').className = lang === 'zh'
+                ? 'px-3 py-1 rounded text-sm font-medium transition bg-blue-600 text-white'
+                : 'px-3 py-1 rounded text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300';
+
+            document.getElementById('langEn').className = lang === 'en'
+                ? 'px-3 py-1 rounded text-sm font-medium transition bg-blue-600 text-white'
+                : 'px-3 py-1 rounded text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300';
+
+            // Update all translatable elements
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    // Use innerHTML for translations containing HTML tags
+                    if (translations[lang][key].includes('<')) {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+
+            // Update placeholders
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                if (translations[lang][key]) {
+                    element.placeholder = translations[lang][key];
+                }
+            });
+
+            // Clear previous results when switching language
+            // (because they contain language-specific text that won't update)
+            document.getElementById('simpleResult').innerHTML = '';
+            document.getElementById('result').innerHTML = '';
+
+            // Save language preference
+            localStorage.setItem('language', lang);
+        }
+
+        // Load saved language preference on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('language') || 'zh';
+            setLanguage(savedLang);
+        });
+
+        // Toggle advanced form
+        document.getElementById('toggleAdvanced').addEventListener('click', function() {
+            const advancedForm = document.getElementById('advancedForm');
+            const toggleIcon = document.getElementById('toggleIcon');
+
+            advancedForm.classList.toggle('hidden');
+            toggleIcon.classList.toggle('rotate-180');
+        });
+
+        // Helper function to get translation
+        function t(key) {
+            return translations[currentLang][key] || key;
+        }
+
+        // Simple form - direct short link generation
+        document.getElementById('simpleForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const url = document.getElementById('simpleUrl').value;
+            const resultDiv = document.getElementById('simpleResult');
+
+            if (!url) {
+                resultDiv.innerHTML = `<div class="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">⚠️ ${t('msg-enter-url')}</div>`;
+                return;
+            }
+
+            resultDiv.innerHTML = `<div class="p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-700">⏳ ${t('msg-generating')}</div>`;
+
+            try {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ link: url })
+                });
+
+                if (!response.ok) {
+                    throw new Error(t('msg-failed'));
+                }
+
+                const data = await response.json();
+                resultDiv.innerHTML = `
+                    <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <p class="text-sm text-gray-600 mb-2">✅ ${t('msg-success')}</p>
+                                <a href="${data.short}" target="_blank" class="text-lg font-semibold text-blue-600 hover:text-blue-800 break-all">${data.short}</a>
+                                <p class="text-xs text-gray-500 mt-2">💡 ${t('msg-permanent-hint')}</p>
+                            </div>
+                            <button onclick="copyToClipboard('${data.short}')" class="ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm">
+                                ${t('btn-copy')}
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                resultDiv.innerHTML = `<div class="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">❌ ${t('msg-failed')}：${error.message}</div>`;
+            }
+        });
+
+        // UTM URL generation helper
         function generateUTMUrl(baseUrl, utmParams) {
             if (!baseUrl) {
-                throw new Error("Invalid Website URL");
+                throw new Error(t('msg-enter-website'));
             }
 
             const url = new URL(baseUrl);
@@ -103,6 +494,8 @@
 
             return url.toString();
         }
+
+        // Advanced form - Generate UTM URL
         document.getElementById('myForm').addEventListener('submit', async (e) => {
             e.preventDefault();
             const website = document.getElementById('website').value;
@@ -112,19 +505,22 @@
             const content = document.getElementById('content').value;
             const term = document.getElementById('term').value;
 
-            console.log({ campaign, source, medium, content, term })
             const resultDiv = document.getElementById('result');
 
             try {
-                resultDiv.textContent = generateUTMUrl(website, { campaign, source, medium, content, term })
-                resultDiv.classList.add('text-green-600');
+                const utmUrl = generateUTMUrl(website, { campaign, source, medium, content, term });
+                resultDiv.innerHTML = `
+                    <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <p class="text-sm text-gray-600 mb-2">✅ ${t('msg-utm-success')}</p>
+                        <p class="text-sm text-blue-600 break-all font-mono">${utmUrl}</p>
+                    </div>
+                `;
             } catch (error) {
-
-                resultDiv.textContent = ` ${error.message}`;
-                resultDiv.classList.add('text-red-600');
+                resultDiv.innerHTML = `<div class="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">❌ ${error.message}</div>`;
             }
         });
 
+        // Advanced form - Generate and shorten UTM URL
         document.getElementById('shortenlink').addEventListener('click', async (e) => {
             e.preventDefault();
             const website = document.getElementById('website').value;
@@ -134,33 +530,103 @@
             const content = document.getElementById('content').value;
             const term = document.getElementById('term').value;
 
-            console.log({ campaign, source, medium, content, term })
             const resultDiv = document.getElementById('result');
 
+            let utmUrl;
             try {
-                resultDiv.textContent = generateUTMUrl(website, { campaign, source, medium, content, term })
-                resultDiv.classList.add('text-green-600');
+                utmUrl = generateUTMUrl(website, { campaign, source, medium, content, term });
             } catch (error) {
-
-                resultDiv.textContent = ` ${error.message}`;
-                resultDiv.classList.add('text-red-600');
-                return
+                resultDiv.innerHTML = `<div class="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">❌ ${error.message}</div>`;
+                return;
             }
+
+            resultDiv.innerHTML = `<div class="p-4 bg-blue-50 border border-blue-200 rounded-lg text-blue-700">⏳ ${t('msg-generating')}</div>`;
 
             try {
                 const response = await fetch('/', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ link: resultDiv.textContent })
+                    body: JSON.stringify({ link: utmUrl })
                 });
+
+                if (!response.ok) {
+                    throw new Error(t('msg-failed'));
+                }
+
                 const data = await response.json();
-                resultDiv.textContent = `Short URL: ${data.short}`;
-                resultDiv.classList.add('text-green-600');
+                resultDiv.innerHTML = `
+                    <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
+                        <div class="flex items-center justify-between">
+                            <div class="flex-1">
+                                <p class="text-sm text-gray-600 mb-2">✅ ${t('msg-success')}</p>
+                                <a href="${data.short}" target="_blank" class="text-lg font-semibold text-blue-600 hover:text-blue-800 break-all">${data.short}</a>
+                                <p class="text-xs text-gray-500 mt-2">💡 ${t('msg-permanent-hint')}</p>
+                            </div>
+                            <button onclick="copyToClipboard('${data.short}')" class="ml-4 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm">
+                                ${t('btn-copy')}
+                            </button>
+                        </div>
+                    </div>
+                `;
             } catch (error) {
-                resultDiv.textContent = `Failed：${error.message}`;
-                resultDiv.classList.add('text-red-600');
+                resultDiv.innerHTML = `<div class="p-4 bg-red-50 border border-red-200 rounded-lg text-red-700">❌ ${t('msg-failed')}：${error.message}</div>`;
             }
         });
+
+        // Copy to clipboard function with visual feedback
+        function copyToClipboard(text) {
+            // Get the button element that triggered this
+            const btn = event.target.closest('button');
+
+            // Fallback for older browsers
+            const copyText = () => {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    return navigator.clipboard.writeText(text);
+                } else {
+                    // Fallback method
+                    const textArea = document.createElement('textarea');
+                    textArea.value = text;
+                    textArea.style.position = 'fixed';
+                    textArea.style.left = '-999999px';
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    try {
+                        document.execCommand('copy');
+                        document.body.removeChild(textArea);
+                        return Promise.resolve();
+                    } catch (err) {
+                        document.body.removeChild(textArea);
+                        return Promise.reject(err);
+                    }
+                }
+            };
+
+            copyText().then(() => {
+                // Success feedback
+                btn.textContent = '✅ ' + translations[currentLang]['msg-copied'];
+                btn.classList.add('bg-green-600', 'hover:bg-green-700');
+                btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    btn.textContent = translations[currentLang]['btn-copy'];
+                    btn.classList.remove('bg-green-600', 'hover:bg-green-700');
+                    btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                }, 2000);
+            }).catch(() => {
+                // Error feedback
+                btn.textContent = '❌ ' + translations[currentLang]['msg-copy-failed'];
+                btn.classList.add('bg-red-600', 'hover:bg-red-700');
+                btn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
+
+                // Reset after 2 seconds
+                setTimeout(() => {
+                    btn.textContent = translations[currentLang]['btn-copy'];
+                    btn.classList.remove('bg-red-600', 'hover:bg-red-700');
+                    btn.classList.add('bg-blue-600', 'hover:bg-blue-700');
+                }, 2000);
+            });
+        }
     </script>
 </body>
 
