@@ -13,54 +13,52 @@
 ></script>
 </head>
 
-<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen py-8 px-4">
-    <div class="max-w-2xl mx-auto">
-        <!-- Header -->
-        <div class="text-center mb-8">
-            <div class="flex items-center justify-center mb-4">
-                <h1 class="text-4xl font-bold text-gray-800">SNDRA.LINK</h1>
-                <a href="https://github.com/atshelchin/sndra-link" target="_blank" class="ml-3 text-gray-600 hover:text-blue-600 transition">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.28 1.08 2.84.82.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.92 0-1.08.39-1.96 1.03-2.65-.1-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.52.33 1.91-1.3 2.75-1.03 2.75-1.03.55 1.36.2 2.37.1 2.62.64.69 1.03 1.57 1.03 2.65 0 3.82-2.33 4.67-4.55 4.92.36.31.56.92.56 1.85v2.74c0 .27.16.59.66.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z" />
-                    </svg>
-                </a>
-            </div>
-            <p class="text-lg text-gray-600" data-i18n="subtitle">免费短链接生成服务</p>
+<body class="bg-gray-50 min-h-screen">
+    <!-- First Screen - Main Content -->
+    <div id="mainScreen" class="min-h-screen flex flex-col">
+        <div class="flex-1 flex items-center justify-center py-8 px-4">
+            <div class="max-w-2xl w-full">
+                <!-- Header -->
+                <div class="text-center mb-12">
+                    <div class="mb-6">
+                        <h1 class="text-5xl sm:text-6xl font-bold text-gray-900 mb-3">SNDRA.LINK</h1>
+                        <p class="text-lg text-gray-600" data-i18n="subtitle">免费短链接生成服务</p>
+                    </div>
 
-            <!-- Language Switcher -->
-            <div class="flex justify-center gap-2 mt-3">
-                <button onclick="setLanguage('zh')" id="langZh"
-                    class="px-3 py-1 rounded text-sm font-medium transition bg-blue-600 text-white">
-                    中文
-                </button>
-                <button onclick="setLanguage('en')" id="langEn"
-                    class="px-3 py-1 rounded text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300">
-                    English
-                </button>
-            </div>
+                    <!-- Language Switcher & GitHub -->
+                    <div class="flex items-center justify-center gap-4 mb-8">
+                        <div class="flex gap-2 border border-gray-300 rounded-lg overflow-hidden">
+                            <button onclick="setLanguage('zh')" id="langZh"
+                                class="px-4 py-2 text-sm font-medium transition bg-gray-900 text-white">
+                                中文
+                            </button>
+                            <button onclick="setLanguage('en')" id="langEn"
+                                class="px-4 py-2 text-sm font-medium transition bg-white text-gray-700 hover:bg-gray-100">
+                                EN
+                            </button>
+                        </div>
+                        <a href="https://github.com/atshelchin/sndra-link" target="_blank"
+                           class="p-2 text-gray-600 hover:text-gray-900 transition rounded-lg hover:bg-gray-100"
+                           title="View on GitHub">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.28 1.08 2.84.82.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.92 0-1.08.39-1.96 1.03-2.65-.1-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.52.33 1.91-1.3 2.75-1.03 2.75-1.03.55 1.36.2 2.37.1 2.62.64.69 1.03 1.57 1.03 2.65 0 3.82-2.33 4.67-4.55 4.92.36.31.56.92.56 1.85v2.74c0 .27.16.59.66.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z" />
+                            </svg>
+                        </a>
+                    </div>
 
-            <!-- Highlight Badges -->
-            <div class="flex flex-wrap justify-center gap-3 mt-4">
-                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-green-100 text-green-800" data-i18n="badge-free">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"/>
-                    </svg>
-                    100% 免费
-                </span>
-                <a href="/commitment.html" class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-blue-100 text-blue-800 hover:bg-blue-200 transition cursor-pointer" data-i18n="badge-commitment">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
-                    </svg>
-                    第一个五年承诺 (2025-12~2030-12)
-                </a>
-                <span class="inline-flex items-center px-4 py-2 rounded-full text-sm font-semibold bg-purple-100 text-purple-800" data-i18n="badge-permanent">
-                    <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM4.332 8.027a6.012 6.012 0 011.912-2.706C6.512 5.73 6.974 6 7.5 6A1.5 1.5 0 019 7.5V8a2 2 0 004 0v-.5A1.5 1.5 0 0114.5 6c.526 0 .988-.27 1.256-.679a6.012 6.012 0 011.913 2.706l-1.163 1.163a2.5 2.5 0 00-.586 2.62l.506 1.012a6.015 6.015 0 01-1.925 1.238l-.964-.482A2.5 2.5 0 0012 13v.5a6.015 6.015 0 01-4 0V13a2.5 2.5 0 00-1.537.578l-.964.482a6.015 6.015 0 01-1.925-1.238l.506-1.012a2.5 2.5 0 00-.586-2.62L4.332 8.027z" clip-rule="evenodd"/>
-                    </svg>
-                    链接永久有效
-                </span>
-            </div>
-        </div>
+                    <!-- Simple Badges -->
+                    <div class="flex flex-wrap justify-center gap-2 text-sm text-gray-600">
+                        <span class="px-3 py-1 bg-white rounded-full border border-gray-200" data-i18n="badge-free">
+                            100% 免费
+                        </span>
+                        <a href="/commitment.html" class="px-3 py-1 bg-white rounded-full border border-gray-200 hover:border-gray-400 transition" data-i18n="badge-commitment">
+                            第一个五年承诺 (2025-12~2030-12)
+                        </a>
+                        <span class="px-3 py-1 bg-white rounded-full border border-gray-200" data-i18n="badge-permanent">
+                            链接永久有效
+                        </span>
+                    </div>
+                </div>
 
         <!-- Main Card with Flip Animation -->
         <div class="bg-white rounded-xl shadow-xl p-6 sm:p-8 relative" style="perspective: 1000px;">
@@ -206,45 +204,68 @@
             </div>
         </div>
 
-        <!-- FAQ Section -->
-        <div class="bg-white rounded-xl shadow-xl p-6 sm:p-8 mt-6">
-            <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center" data-i18n="faq-title">常见问题</h2>
-            <div class="space-y-4">
-                <div class="border-l-4 border-blue-500 pl-4">
-                    <h3 class="font-semibold text-gray-800 mb-2" data-i18n="faq-home-1q">❓ 短链接会过期吗？</h3>
-                    <p class="text-gray-600 text-sm" data-i18n="faq-home-1a">
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="flex flex-col items-center py-8">
+            <p class="text-sm text-gray-500 mb-2" data-i18n="scroll-hint">向下滚动查看常见问题</p>
+            <button onclick="document.getElementById('faqSection').scrollIntoView({behavior: 'smooth'})"
+                    class="animate-bounce text-gray-400 hover:text-gray-600 transition">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Second Screen - FAQ -->
+    <div id="faqSection" class="min-h-screen bg-white py-16 px-4">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-12 text-center" data-i18n="faq-title">常见问题</h2>
+
+            <div class="grid md:grid-cols-2 gap-6 mb-12">
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition">
+                    <h3 class="font-semibold text-gray-900 text-lg mb-3" data-i18n="faq-home-1q">❓ 短链接会过期吗？</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="faq-home-1a">
                         不会！所有生成的短链接永久有效，只要服务在运行就不会过期。我们承诺至少运行到 2030 年 12 月。
                     </p>
                 </div>
-                <div class="border-l-4 border-green-500 pl-4">
-                    <h3 class="font-semibold text-gray-800 mb-2" data-i18n="faq-home-2q">❓ 需要注册账号吗？</h3>
-                    <p class="text-gray-600 text-sm" data-i18n="faq-home-2a">
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition">
+                    <h3 class="font-semibold text-gray-900 text-lg mb-3" data-i18n="faq-home-2q">❓ 需要注册账号吗？</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="faq-home-2a">
                         完全不需要！无需注册、无需登录，直接使用。我们不收集任何个人信息。
                     </p>
                 </div>
-                <div class="border-l-4 border-purple-500 pl-4">
-                    <h3 class="font-semibold text-gray-800 mb-2" data-i18n="faq-home-3q">❓ Campaign URL Builder 是什么？</h3>
-                    <p class="text-gray-600 text-sm" data-i18n="faq-home-3a">
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition">
+                    <h3 class="font-semibold text-gray-900 text-lg mb-3" data-i18n="faq-home-3q">❓ Campaign URL Builder 是什么？</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="faq-home-3a">
                         这是一个高级功能，可以为你的链接添加 UTM 参数，用于追踪营销活动的流量来源和效果。适合营销人员和数据分析师使用。
                     </p>
                 </div>
-                <div class="border-l-4 border-orange-500 pl-4">
-                    <h3 class="font-semibold text-gray-800 mb-2" data-i18n="faq-home-4q">❓ 服务真的免费吗？</h3>
-                    <p class="text-gray-600 text-sm" data-i18n="faq-home-4a">
+                <div class="bg-gray-50 rounded-xl p-6 hover:shadow-md transition">
+                    <h3 class="font-semibold text-gray-900 text-lg mb-3" data-i18n="faq-home-4q">❓ 服务真的免费吗？</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="faq-home-4a">
                         是的！100% 免费，无广告，无限制。这是一个开源项目，我们承诺永久免费运行。
                     </p>
                 </div>
             </div>
-            <div class="text-center mt-6">
-                <a href="/commitment.html" class="text-blue-600 hover:text-blue-800 text-sm font-medium" data-i18n="faq-more">
-                    查看完整服务承诺 →
+
+            <!-- More Info Link -->
+            <div class="text-center">
+                <a href="/commitment.html"
+                   class="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-lg hover:bg-gray-800 transition font-medium">
+                    <span data-i18n="faq-more">查看完整服务承诺</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                    </svg>
                 </a>
             </div>
-        </div>
 
-        <!-- Footer -->
-        <div class="text-center mt-8 text-sm text-gray-600">
-            <p data-i18n="footer-text">安全 · 可靠 · 永久免费</p>
+            <!-- Footer -->
+            <div class="text-center mt-16 text-sm text-gray-500">
+                <p data-i18n="footer-text">安全 · 可靠 · 永久免费</p>
+            </div>
         </div>
     </div>
 
@@ -308,7 +329,8 @@
                 "faq-home-3a": "这是一个高级功能，可以为你的链接添加 UTM 参数，用于追踪营销活动的流量来源和效果。适合营销人员和数据分析师使用。",
                 "faq-home-4q": "❓ 服务真的免费吗？",
                 "faq-home-4a": "是的！100% 免费，无广告，无限制。这是一个开源项目，我们承诺永久免费运行。",
-                "faq-more": "查看完整服务承诺 →"
+                "faq-more": "查看完整服务承诺",
+                "scroll-hint": "向下滚动查看常见问题"
             },
             en: {
                 subtitle: "Free URL Shortening Service",
@@ -322,7 +344,9 @@
                 "advanced-section": "Advanced Features",
                 "advanced-title": "Campaign URL Builder",
                 "advanced-subtitle": "(Marketing Campaign Tracking)",
-                "utm-website-label": "Website URL",
+                "switch-to-advanced": "Switch to Advanced Mode",
+                "switch-to-simple": "Back to Basic Mode",
+                "utm-website-label": "Target URL",
                 "utm-website-placeholder": "https://example.com",
                 "utm-website-hint": "📌 Full URL of the target website",
                 "utm-info": "<strong>UTM Parameters:</strong> Track traffic sources and campaign effectiveness",
@@ -365,7 +389,8 @@
                 "faq-home-3a": "It's an advanced feature that adds UTM parameters to your links for tracking marketing campaign traffic sources and effectiveness. Perfect for marketers and data analysts.",
                 "faq-home-4q": "❓ Is the service really free?",
                 "faq-home-4a": "Yes! 100% free, no ads, no limits. This is an open-source project, and we promise to keep it free forever.",
-                "faq-more": "View Full Service Commitment →"
+                "faq-more": "View Full Service Commitment",
+                "scroll-hint": "Scroll down to view FAQ"
             }
         };
 
@@ -377,12 +402,12 @@
 
             // Update button styles
             document.getElementById('langZh').className = lang === 'zh'
-                ? 'px-3 py-1 rounded text-sm font-medium transition bg-blue-600 text-white'
-                : 'px-3 py-1 rounded text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300';
+                ? 'px-4 py-2 text-sm font-medium transition bg-gray-900 text-white'
+                : 'px-4 py-2 text-sm font-medium transition bg-white text-gray-700 hover:bg-gray-100';
 
             document.getElementById('langEn').className = lang === 'en'
-                ? 'px-3 py-1 rounded text-sm font-medium transition bg-blue-600 text-white'
-                : 'px-3 py-1 rounded text-sm font-medium transition bg-gray-200 text-gray-700 hover:bg-gray-300';
+                ? 'px-4 py-2 text-sm font-medium transition bg-gray-900 text-white'
+                : 'px-4 py-2 text-sm font-medium transition bg-white text-gray-700 hover:bg-gray-100';
 
             // Update all translatable elements
             document.querySelectorAll('[data-i18n]').forEach(element => {
@@ -420,13 +445,21 @@
             setLanguage(savedLang);
         });
 
-        // Toggle advanced form
-        document.getElementById('toggleAdvanced').addEventListener('click', function() {
-            const advancedForm = document.getElementById('advancedForm');
-            const toggleIcon = document.getElementById('toggleIcon');
+        // Toggle between simple and advanced forms
+        document.getElementById('showAdvanced')?.addEventListener('click', function() {
+            document.getElementById('simpleFormContainer').classList.add('hidden');
+            document.getElementById('advancedFormContainer').classList.remove('hidden');
+            // Clear results when switching
+            document.getElementById('simpleResult').innerHTML = '';
+            document.getElementById('result').innerHTML = '';
+        });
 
-            advancedForm.classList.toggle('hidden');
-            toggleIcon.classList.toggle('rotate-180');
+        document.getElementById('showSimple')?.addEventListener('click', function() {
+            document.getElementById('advancedFormContainer').classList.add('hidden');
+            document.getElementById('simpleFormContainer').classList.remove('hidden');
+            // Clear results when switching
+            document.getElementById('simpleResult').innerHTML = '';
+            document.getElementById('result').innerHTML = '';
         });
 
         // Helper function to get translation
@@ -511,8 +544,15 @@
                 const utmUrl = generateUTMUrl(website, { campaign, source, medium, content, term });
                 resultDiv.innerHTML = `
                     <div class="p-4 bg-green-50 border border-green-200 rounded-lg">
-                        <p class="text-sm text-gray-600 mb-2">✅ ${t('msg-utm-success')}</p>
-                        <p class="text-sm text-blue-600 break-all font-mono">${utmUrl}</p>
+                        <div class="flex items-start justify-between gap-4">
+                            <div class="flex-1">
+                                <p class="text-sm text-gray-600 mb-2">✅ ${t('msg-utm-success')}</p>
+                                <p class="text-sm text-blue-600 break-all font-mono">${utmUrl}</p>
+                            </div>
+                            <button onclick="copyToClipboard('${utmUrl.replace(/'/g, "\\'")}')" class="flex-shrink-0 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition text-sm">
+                                ${t('btn-copy')}
+                            </button>
+                        </div>
                     </div>
                 `;
             } catch (error) {
