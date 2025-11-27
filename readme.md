@@ -247,7 +247,7 @@ MIT License - feel free to use this project for any purpose.
 ## Support
 
 For issues, questions, or suggestions:
-- Open an issue on [GitHub](https://github.com/athshelchin/sndra-link/issues)
+- Open an issue on [GitHub](https://github.com/atshelchin/sndra-link/issues)
 - Visit our [Commitment Page](https://sndra.link/commitment.html)
 
 ---
