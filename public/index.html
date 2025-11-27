@@ -15,49 +15,36 @@
 
 <body class="bg-gray-50 min-h-screen">
     <!-- First Screen - Main Content -->
-    <div id="mainScreen" class="min-h-screen flex flex-col">
+    <div id="mainScreen" class="min-h-screen flex flex-col relative">
+        <!-- Top Right Controls -->
+        <div class="absolute top-4 right-4 z-50 flex items-center gap-2 sm:gap-3">
+            <!-- Language Switcher -->
+            <div class="flex gap-0 border border-gray-300 rounded-lg overflow-hidden bg-white shadow-sm">
+                <button onclick="setLanguage('zh')" id="langZh"
+                    class="px-2 sm:px-3 py-1.5 text-xs font-medium transition bg-gray-900 text-white">
+                    中文
+                </button>
+                <button onclick="setLanguage('en')" id="langEn"
+                    class="px-2 sm:px-3 py-1.5 text-xs font-medium transition bg-white text-gray-700 hover:bg-gray-100">
+                    EN
+                </button>
+            </div>
+            <!-- GitHub Link -->
+            <a href="https://github.com/atshelchin/sndra-link" target="_blank"
+               class="p-1.5 text-gray-600 hover:text-gray-900 transition rounded-lg hover:bg-white bg-white shadow-sm"
+               title="View on GitHub">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.28 1.08 2.84.82.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.92 0-1.08.39-1.96 1.03-2.65-.1-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.52.33 1.91-1.3 2.75-1.03 2.75-1.03.55 1.36.2 2.37.1 2.62.64.69 1.03 1.57 1.03 2.65 0 3.82-2.33 4.67-4.55 4.92.36.31.56.92.56 1.85v2.74c0 .27.16.59.66.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z" />
+                </svg>
+            </a>
+        </div>
+
         <div class="flex-1 flex items-center justify-center py-8 px-4">
             <div class="max-w-2xl w-full">
                 <!-- Header -->
-                <div class="text-center mb-12">
-                    <div class="mb-6">
-                        <h1 class="text-5xl sm:text-6xl font-bold text-gray-900 mb-3">SNDRA.LINK</h1>
-                        <p class="text-lg text-gray-600" data-i18n="subtitle">免费短链接生成服务</p>
-                    </div>
-
-                    <!-- Language Switcher & GitHub -->
-                    <div class="flex items-center justify-center gap-4 mb-8">
-                        <div class="flex gap-2 border border-gray-300 rounded-lg overflow-hidden">
-                            <button onclick="setLanguage('zh')" id="langZh"
-                                class="px-4 py-2 text-sm font-medium transition bg-gray-900 text-white">
-                                中文
-                            </button>
-                            <button onclick="setLanguage('en')" id="langEn"
-                                class="px-4 py-2 text-sm font-medium transition bg-white text-gray-700 hover:bg-gray-100">
-                                EN
-                            </button>
-                        </div>
-                        <a href="https://github.com/atshelchin/sndra-link" target="_blank"
-                           class="p-2 text-gray-600 hover:text-gray-900 transition rounded-lg hover:bg-gray-100"
-                           title="View on GitHub">
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.12-1.47-1.12-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.28 1.08 2.84.82.09-.64.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.92 0-1.08.39-1.96 1.03-2.65-.1-.25-.45-1.26.1-2.62 0 0 .84-.27 2.75 1.03A9.56 9.56 0 0 1 12 6.8c.85 0 1.71.11 2.52.33 1.91-1.3 2.75-1.03 2.75-1.03.55 1.36.2 2.37.1 2.62.64.69 1.03 1.57 1.03 2.65 0 3.82-2.33 4.67-4.55 4.92.36.31.56.92.56 1.85v2.74c0 .27.16.59.66.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z" />
-                            </svg>
-                        </a>
-                    </div>
-
-                    <!-- Simple Badges -->
-                    <div class="flex flex-wrap justify-center gap-2 text-sm text-gray-600">
-                        <span class="px-3 py-1 bg-white rounded-full border border-gray-200" data-i18n="badge-free">
-                            100% 免费
-                        </span>
-                        <a href="/commitment.html" class="px-3 py-1 bg-white rounded-full border border-gray-200 hover:border-gray-400 transition" data-i18n="badge-commitment">
-                            第一个五年承诺 (2025-12~2030-12)
-                        </a>
-                        <span class="px-3 py-1 bg-white rounded-full border border-gray-200" data-i18n="badge-permanent">
-                            链接永久有效
-                        </span>
-                    </div>
+                <div class="text-center my-8">
+                    <h1 class="text-5xl sm:text-6xl font-bold text-gray-900 mb-3">SNDRA.LINK</h1>
+                    <p class="text-lg text-gray-600" data-i18n="subtitle">免费短链接生成服务</p>
                 </div>
 
         <!-- Main Card with Flip Animation -->
@@ -97,10 +84,10 @@
 
                 <!-- Advanced Campaign Builder (Back) -->
                 <div id="advancedFormContainer" class="hidden space-y-4">
-                    <div class="flex items-center justify-between mb-4">
-                        <h2 class="text-xl font-semibold text-gray-800" data-i18n="advanced-title">Campaign URL Builder</h2>
+                    <div class="flex items-center justify-between mb-4 gap-2">
+                        <h2 class="text-lg sm:text-xl font-semibold text-gray-800 flex-shrink min-w-0" data-i18n="advanced-title">Campaign URL Builder</h2>
                         <button type="button" id="showSimple"
-                            class="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1">
+                            class="text-sm text-blue-600 hover:text-blue-800 font-medium flex items-center gap-1 whitespace-nowrap flex-shrink-0">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/>
                             </svg>
@@ -109,7 +96,7 @@
                     </div>
                     <form id="myForm" class="space-y-4">
                         <div>
-                            <label for="website" class="block text-sm font-medium text-gray-700 mb-1">
+                            <label for="website" class="block text-sm font-medium text-gray-700 mb-2">
                                 <span data-i18n="utm-website-label">目标网址</span> <span class="text-red-500">*</span>
                             </label>
                             <input type="url" id="website" name="website"
@@ -117,73 +104,116 @@
                                 data-i18n-placeholder="utm-website-placeholder"
                                 placeholder="https://example.com"
                                 required>
-                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-website-hint">📌 目标网站的完整 URL</p>
-                        </div>
-
-                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
-                            <p class="text-sm text-blue-800" data-i18n="utm-info">
-                                <strong>UTM 参数说明：</strong>用于追踪营销活动的流量来源和效果
-                            </p>
                         </div>
 
                         <div>
-                            <label for="campaign" class="flex items-center text-sm font-medium text-gray-700 mb-1">
+                            <label for="campaign" class="flex items-center text-sm font-medium text-gray-700 mb-2 group flex-wrap">
                                 <span data-i18n="utm-campaign-label">Campaign Name</span>
-                                <span class="ml-2 text-xs text-gray-500">(utm_campaign)</span>
+                                <span class="ml-1.5 text-xs text-gray-400 hidden sm:inline">(utm_campaign)</span>
+                                <div class="relative ml-1.5">
+                                    <span class="cursor-help text-gray-400 hover:text-gray-600">
+                                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+                                        </svg>
+                                    </span>
+                                    <div class="invisible group-hover:visible absolute left-6 top-0 z-10 w-64 p-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg">
+                                        <span data-i18n="utm-campaign-hint">活动标识，例如：双 11 促销、新品发布</span>
+                                    </div>
+                                </div>
                             </label>
                             <input type="text" id="campaign" name="campaign"
                                 class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
                                 data-i18n-placeholder="utm-campaign-placeholder"
                                 placeholder="summer_sale">
-                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-campaign-hint">💡 活动名称，例如：双11促销、新品发布</p>
                         </div>
 
-                        <div>
-                            <label for="source" class="flex items-center text-sm font-medium text-gray-700 mb-1">
-                                <span data-i18n="utm-source-label">Source</span>
-                                <span class="ml-2 text-xs text-gray-500">(utm_source)</span>
-                            </label>
-                            <input type="text" id="source" name="source"
-                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                data-i18n-placeholder="utm-source-placeholder"
-                                placeholder="google">
-                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-source-hint">💡 流量来源，例如：google、facebook、newsletter</p>
+                        <!-- Two columns on desktop, single on mobile -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="source" class="flex items-center text-sm font-medium text-gray-700 mb-2 group flex-wrap">
+                                    <span data-i18n="utm-source-label">Source</span>
+                                    <span class="ml-1.5 text-xs text-gray-400 hidden sm:inline">(utm_source)</span>
+                                    <div class="relative ml-1.5">
+                                        <span class="cursor-help text-gray-400 hover:text-gray-600">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </span>
+                                        <div class="invisible group-hover:visible absolute left-6 top-0 z-10 w-64 p-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg">
+                                            <span data-i18n="utm-source-hint">访客来源平台，例如：google、facebook、newsletter</span>
+                                        </div>
+                                    </div>
+                                </label>
+                                <input type="text" id="source" name="source"
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    data-i18n-placeholder="utm-source-placeholder"
+                                    placeholder="google">
+                            </div>
+
+                            <div>
+                                <label for="medium" class="flex items-center text-sm font-medium text-gray-700 mb-2 group flex-wrap">
+                                    <span data-i18n="utm-medium-label">Medium</span>
+                                    <span class="ml-1.5 text-xs text-gray-400 hidden sm:inline">(utm_medium)</span>
+                                    <div class="relative ml-1.5">
+                                        <span class="cursor-help text-gray-400 hover:text-gray-600">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </span>
+                                        <div class="invisible group-hover:visible absolute left-6 top-0 z-10 w-64 p-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg">
+                                            <span data-i18n="utm-medium-hint">推广媒介，例如：cpc（付费广告）、email、social</span>
+                                        </div>
+                                    </div>
+                                </label>
+                                <input type="text" id="medium" name="medium"
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    data-i18n-placeholder="utm-medium-placeholder"
+                                    placeholder="cpc">
+                            </div>
                         </div>
 
-                        <div>
-                            <label for="medium" class="flex items-center text-sm font-medium text-gray-700 mb-1">
-                                <span data-i18n="utm-medium-label">Medium</span>
-                                <span class="ml-2 text-xs text-gray-500">(utm_medium)</span>
-                            </label>
-                            <input type="text" id="medium" name="medium"
-                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                data-i18n-placeholder="utm-medium-placeholder"
-                                placeholder="cpc">
-                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-medium-hint">💡 媒介类型，例如：cpc（付费广告）、email、social</p>
-                        </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="content" class="flex items-center text-sm font-medium text-gray-700 mb-2 group flex-wrap">
+                                    <span data-i18n="utm-content-label">Content</span>
+                                    <span class="ml-1.5 text-xs text-gray-400 hidden sm:inline">(utm_content)</span>
+                                    <div class="relative ml-1.5">
+                                        <span class="cursor-help text-gray-400 hover:text-gray-600">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </span>
+                                        <div class="invisible group-hover:visible absolute left-6 top-0 z-10 w-64 p-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg">
+                                            <span data-i18n="utm-content-hint">区分同一来源的不同内容，例如：banner_ad、text_link</span>
+                                        </div>
+                                    </div>
+                                </label>
+                                <input type="text" id="content" name="content"
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    data-i18n-placeholder="utm-content-placeholder"
+                                    placeholder="banner_ad">
+                            </div>
 
-                        <div>
-                            <label for="content" class="flex items-center text-sm font-medium text-gray-700 mb-1">
-                                <span data-i18n="utm-content-label">Content</span>
-                                <span class="ml-2 text-xs text-gray-500">(utm_content)</span>
-                            </label>
-                            <input type="text" id="content" name="content"
-                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                data-i18n-placeholder="utm-content-placeholder"
-                                placeholder="banner_ad">
-                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-content-hint">💡 区分同一来源的不同内容，例如：banner_ad、text_link</p>
-                        </div>
-
-                        <div>
-                            <label for="term" class="flex items-center text-sm font-medium text-gray-700 mb-1">
-                                <span data-i18n="utm-term-label">Term</span>
-                                <span class="ml-2 text-xs text-gray-500">(utm_term)</span>
-                            </label>
-                            <input type="text" id="term" name="term"
-                                class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                                data-i18n-placeholder="utm-term-placeholder"
-                                placeholder="running+shoes">
-                            <p class="mt-1 text-xs text-gray-500" data-i18n="utm-term-hint">💡 付费搜索关键词，用于追踪广告关键词效果</p>
+                            <div>
+                                <label for="term" class="flex items-center text-sm font-medium text-gray-700 mb-2 group flex-wrap">
+                                    <span data-i18n="utm-term-label">Term</span>
+                                    <span class="ml-1.5 text-xs text-gray-400 hidden sm:inline">(utm_term)</span>
+                                    <div class="relative ml-1.5">
+                                        <span class="cursor-help text-gray-400 hover:text-gray-600">
+                                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/>
+                                            </svg>
+                                        </span>
+                                        <div class="invisible group-hover:visible absolute left-6 top-0 z-10 w-64 p-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg">
+                                            <span data-i18n="utm-term-hint">付费搜索关键词，用于追踪广告关键词效果</span>
+                                        </div>
+                                    </div>
+                                </label>
+                                <input type="text" id="term" name="term"
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    data-i18n-placeholder="utm-term-placeholder"
+                                    placeholder="running+shoes">
+                            </div>
                         </div>
 
                         <div class="flex space-x-4 pt-4">
@@ -292,19 +322,19 @@
                 "utm-info": "<strong>UTM 参数说明：</strong>用于追踪营销活动的流量来源和效果",
                 "utm-campaign-label": "活动名称",
                 "utm-campaign-placeholder": "summer_sale",
-                "utm-campaign-hint": "💡 活动标识，例如：双11促销、新品发布",
+                "utm-campaign-hint": "活动标识，例如：双 11 促销、新品发布",
                 "utm-source-label": "流量来源",
                 "utm-source-placeholder": "google",
-                "utm-source-hint": "💡 访客来源平台，例如：google、facebook、newsletter",
+                "utm-source-hint": "访客来源平台，例如：google、facebook、newsletter",
                 "utm-medium-label": "媒介类型",
                 "utm-medium-placeholder": "cpc",
-                "utm-medium-hint": "💡 推广媒介，例如：cpc（付费广告）、email、social",
+                "utm-medium-hint": "推广媒介，例如：cpc（付费广告）、email、social",
                 "utm-content-label": "内容标识",
                 "utm-content-placeholder": "banner_ad",
-                "utm-content-hint": "💡 区分同一来源的不同内容，例如：banner_ad、text_link",
+                "utm-content-hint": "区分同一来源的不同内容，例如：banner_ad、text_link",
                 "utm-term-label": "关键词",
                 "utm-term-placeholder": "running+shoes",
-                "utm-term-hint": "💡 付费搜索关键词，用于追踪广告关键词效果",
+                "utm-term-hint": "付费搜索关键词，用于追踪广告关键词效果",
                 "utm-button-generate": "生成 UTM 链接",
                 "utm-button-shorten": "生成并缩短链接",
                 "footer-text": "安全 · 可靠 · 永久免费",
@@ -352,19 +382,19 @@
                 "utm-info": "<strong>UTM Parameters:</strong> Track traffic sources and campaign effectiveness",
                 "utm-campaign-label": "Campaign Name",
                 "utm-campaign-placeholder": "summer_sale",
-                "utm-campaign-hint": "💡 Campaign identifier, e.g., summer_sale, product_launch",
+                "utm-campaign-hint": "Campaign identifier, e.g., summer_sale, product_launch",
                 "utm-source-label": "Source",
                 "utm-source-placeholder": "google",
-                "utm-source-hint": "💡 Traffic source, e.g., google, facebook, newsletter",
+                "utm-source-hint": "Traffic source, e.g., google, facebook, newsletter",
                 "utm-medium-label": "Medium",
                 "utm-medium-placeholder": "cpc",
-                "utm-medium-hint": "💡 Medium type, e.g., cpc (paid ads), email, social",
+                "utm-medium-hint": "Medium type, e.g., cpc (paid ads), email, social",
                 "utm-content-label": "Content",
                 "utm-content-placeholder": "banner_ad",
-                "utm-content-hint": "💡 Differentiate content from same source, e.g., banner_ad, text_link",
+                "utm-content-hint": "Differentiate content from same source, e.g., banner_ad, text_link",
                 "utm-term-label": "Term",
                 "utm-term-placeholder": "running+shoes",
-                "utm-term-hint": "💡 Paid search keywords for tracking ad keyword performance",
+                "utm-term-hint": "Paid search keywords for tracking ad keyword performance",
                 "utm-button-generate": "Generate UTM Link",
                 "utm-button-shorten": "Generate & Shorten",
                 "footer-text": "Secure · Reliable · Forever Free",
@@ -402,12 +432,12 @@
 
             // Update button styles
             document.getElementById('langZh').className = lang === 'zh'
-                ? 'px-4 py-2 text-sm font-medium transition bg-gray-900 text-white'
-                : 'px-4 py-2 text-sm font-medium transition bg-white text-gray-700 hover:bg-gray-100';
+                ? 'px-3 py-1.5 text-xs font-medium transition bg-gray-900 text-white'
+                : 'px-3 py-1.5 text-xs font-medium transition bg-white text-gray-700 hover:bg-gray-100';
 
             document.getElementById('langEn').className = lang === 'en'
-                ? 'px-4 py-2 text-sm font-medium transition bg-gray-900 text-white'
-                : 'px-4 py-2 text-sm font-medium transition bg-white text-gray-700 hover:bg-gray-100';
+                ? 'px-3 py-1.5 text-xs font-medium transition bg-gray-900 text-white'
+                : 'px-3 py-1.5 text-xs font-medium transition bg-white text-gray-700 hover:bg-gray-100';
 
             // Update all translatable elements
             document.querySelectorAll('[data-i18n]').forEach(element => {
