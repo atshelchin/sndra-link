@@ -32,13 +32,9 @@ jobs:
               cd sndra-link
             fi
 
-            # Stop existing containers
-            echo "Stopping existing containers..."
-            docker compose down || true
-
-            # Build and start containers
-            echo "Building and starting containers..."
-            docker compose up -d --build
+            # Deploy with zero downtime
+            echo "Deploying with zero downtime..."
+            docker compose up -d --build --no-deps sndra-link-service
 
             # Clean up old images
             echo "Cleaning up old images..."
