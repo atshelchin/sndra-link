@@ -469,10 +469,30 @@
             localStorage.setItem('language', lang);
         }
 
-        // Load saved language preference on page load
+        // Detect user's preferred language from browser
+        function detectUserLanguage() {
+            // Check localStorage first (user preference)
+            const savedLang = localStorage.getItem('language');
+            if (savedLang) {
+                return savedLang;
+            }
+
+            // Detect from browser language
+            const browserLang = navigator.language || navigator.userLanguage;
+
+            // Check if browser language starts with 'zh' (Chinese variants)
+            if (browserLang.toLowerCase().startsWith('zh')) {
+                return 'zh';
+            }
+
+            // Default to English for all other languages
+            return 'en';
+        }
+
+        // Load language preference on page load
         document.addEventListener('DOMContentLoaded', function() {
-            const savedLang = localStorage.getItem('language') || 'zh';
-            setLanguage(savedLang);
+            const userLang = detectUserLanguage();
+            setLanguage(userLang);
         });
 
         // Toggle between simple and advanced forms
