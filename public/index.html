@@ -541,6 +541,49 @@
             }
         });
 
+        // Parse UTM parameters from URL and populate form fields
+        function parseAndPopulateUTM(urlString) {
+            try {
+                const url = new URL(urlString);
+
+                // Extract UTM parameters
+                const utmParams = {
+                    campaign: url.searchParams.get('utm_campaign'),
+                    source: url.searchParams.get('utm_source'),
+                    medium: url.searchParams.get('utm_medium'),
+                    content: url.searchParams.get('utm_content'),
+                    term: url.searchParams.get('utm_term')
+                };
+
+                // Populate form fields if UTM parameters exist
+                if (utmParams.campaign) document.getElementById('campaign').value = utmParams.campaign;
+                if (utmParams.source) document.getElementById('source').value = utmParams.source;
+                if (utmParams.medium) document.getElementById('medium').value = utmParams.medium;
+                if (utmParams.content) document.getElementById('content').value = utmParams.content;
+                if (utmParams.term) document.getElementById('term').value = utmParams.term;
+
+                // Remove UTM parameters from the URL and update website field
+                url.searchParams.delete('utm_campaign');
+                url.searchParams.delete('utm_source');
+                url.searchParams.delete('utm_medium');
+                url.searchParams.delete('utm_content');
+                url.searchParams.delete('utm_term');
+
+                return url.toString();
+            } catch (e) {
+                return urlString;
+            }
+        }
+
+        // Listen for website input changes to auto-parse UTM parameters
+        document.getElementById('website').addEventListener('blur', function() {
+            const urlString = this.value.trim();
+            if (urlString) {
+                const cleanUrl = parseAndPopulateUTM(urlString);
+                this.value = cleanUrl;
+            }
+        });
+
         // UTM URL generation helper
         function generateUTMUrl(baseUrl, utmParams) {
             if (!baseUrl) {
