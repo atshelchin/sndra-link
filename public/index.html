@@ -555,6 +555,14 @@
                     term: url.searchParams.get('utm_term')
                 };
 
+                // Check if any UTM parameters exist
+                const hasUTM = Object.values(utmParams).some(v => v !== null);
+
+                if (!hasUTM) {
+                    // No UTM parameters found, do nothing
+                    return;
+                }
+
                 // Populate form fields if UTM parameters exist
                 if (utmParams.campaign) document.getElementById('campaign').value = utmParams.campaign;
                 if (utmParams.source) document.getElementById('source').value = utmParams.source;
@@ -562,25 +570,17 @@
                 if (utmParams.content) document.getElementById('content').value = utmParams.content;
                 if (utmParams.term) document.getElementById('term').value = utmParams.term;
 
-                // Remove UTM parameters from the URL and update website field
-                url.searchParams.delete('utm_campaign');
-                url.searchParams.delete('utm_source');
-                url.searchParams.delete('utm_medium');
-                url.searchParams.delete('utm_content');
-                url.searchParams.delete('utm_term');
-
-                return url.toString();
             } catch (e) {
-                return urlString;
+                // If URL parsing fails, do nothing
+                return;
             }
         }
 
         // Listen for website input changes to auto-parse UTM parameters
-        document.getElementById('website').addEventListener('blur', function() {
+        document.getElementById('website').addEventListener('input', function() {
             const urlString = this.value.trim();
             if (urlString) {
-                const cleanUrl = parseAndPopulateUTM(urlString);
-                this.value = cleanUrl;
+                parseAndPopulateUTM(urlString);
             }
         });
 
