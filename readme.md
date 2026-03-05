@@ -13,9 +13,6 @@ A fast, reliable, and free URL shortening service built with Rust and Axum. SNDR
 - **🐳 Docker Ready**: Easy deployment with Docker and Docker Compose
 - **⚡ Auto-Deploy**: GitHub Actions integration for seamless CI/CD
 
-## Our 5-Year Commitment
-
-We guarantee uninterrupted service from **December 1, 2025** to **December 1, 2030**. All shortened links created during this period will remain active and accessible.
 
 ## Quick Start
 
@@ -169,8 +166,7 @@ sndra-link/
 ├── src/
 │   └── main.rs           # Main application code
 ├── public/
-│   ├── index.html        # Main interface
-│   └── commitment.html   # Service commitment page
+│   └── index.html        # Main interface
 ├── .github/
 │   └── workflows/
 │       └── deploy.yml    # CI/CD pipeline
@@ -248,8 +244,6 @@ MIT License - feel free to use this project for any purpose.
 
 For issues, questions, or suggestions:
 - Open an issue on [GitHub](https://github.com/atshelchin/sndra-link/issues)
-- Visit our [Commitment Page](https://sndra.link/commitment.html)
-
 ---
 
 **Built with ❤️ using Rust**
